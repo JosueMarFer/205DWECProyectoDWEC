@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E2</title>
+    </head>
+    <body>
+        <script>
+            function comprobarCaracter(palabra) {
+                validateChar = true;
+                if (palabra != null) {
+                    for (let index = 0; index < palabra.length; index++) {
+                        if (
+                                (palabra.charCodeAt(index) >= 65 && palabra.charCodeAt(index) <= 90) ||
+                                (palabra.charCodeAt(index) >= 97 && palabra.charCodeAt(index) <= 122)
+                                ) {
+                        } else {
+                            validateChar = false;
+                        }
+                    }
+                }
+                return validateChar;
+            }
+
+            function funcionSolicitarPalabra() {
+                let palabra = prompt("Introduce el palabra");
+                while ((!isNaN(palabra) && palabra != null && palabra != "") || !comprobarCaracter(palabra)) {
+                    alert("No es un palabra");
+                    palabra = prompt("Introduce el palabra");
+                }
+                return palabra;
+                return palabra;
+            }
+
+            function funcionAlmacenarPalabras() {
+                let aPalabras = [],
+                        palabraProvisional;
+                do {
+                    palabraProvisional = funcionSolicitarPalabra();
+                    if (palabraProvisional != null && palabraProvisional != "")
+                        aPalabras.push(palabraProvisional);
+                } while (palabraProvisional != null && palabraProvisional != "");
+                return aPalabras;
+            }
+
+            function funcionMapaPalabras(aPalabras) {
+                mPalabras = new Map();
+                for (const iterator of aPalabras) {
+                    mPalabras.set(iterator, 0);
+                }
+                for (const iterator of aPalabras) {
+                    mPalabras.set(iterator, (mPalabras.get(iterator) + 1));
+                }
+                for (const [key, value] of mPalabras) {
+                    document.write(key + ": " + value + "<br>");
+                }
+            }
+
+
+            let aPalabras = [];
+            aPalabras = funcionAlmacenarPalabras();
+            funcionMapaPalabras(aPalabras);
+        </script>
+    </body>
+</html>

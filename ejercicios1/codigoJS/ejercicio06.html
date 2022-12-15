@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E6</title>
+    </head>
+    <body>
+        <script>
+            var numAlumnos = prompt("Introduce el numero de alumnos");
+            while (isNaN(numAlumnos) || numAlumnos.length <= 0) {
+            alert("No es un numero");
+            numAlumnos = prompt("Introduce el numero de alumnos");
+            }
+            numAlumnos = parseInt(numAlumnos);
+            var nomAlumno,
+                    numexp,
+                    notaPractica,
+                    notaTeoria,
+                    actitud,
+                    mediaTotal = 0,
+                    mediaPractica = 0,
+                    mediaTeoria = 0,
+                    mediaActitud = 0,
+                    text;
+            text;
+            for (let index = 0; index < numAlumnos; index++) {
+            nomAlumno = prompt("Introduce el nombre de alumno");
+            while (isNaN(nomAlumno) == false || nomAlumno.length <= 0) {
+            alert("No es un nombre");
+            nomAlumno = prompt("Introduce el nombre de alumno");
+            }
+            numexp = prompt("Introduce el numero de expediente");
+            while (isNaN(numexp[0]) || isNaN(numexp[1]) || isNaN(numexp[2]) || isNaN(numexp[3]) || isNaN(numexp[4]) == false || numexp.length != 5) {
+            alert("No es una cadena valida");
+            numexp = prompt("Introduce el numero de expediente");
+            }
+            notaPractica = prompt("introduce la calificacion de la parte practica");
+            while (isNaN(notaPractica) || notaPractica < 0 || notaPractica > 10 || notaPractica.length <= 0) {
+            alert("No es una nota valida (numero comprendido entre 0 y 10)");
+            notaPractica = prompt("introduce la calificacion de la parte practica");
+            }
+            notaTeoria = prompt("introduce la calificacion de la parte teorica");
+            while (isNaN(notaTeoria) || notaTeoria < 0 || notaTeoria > 10 || notaTeoria.length <= 0) {
+            alert("No es una nota valida (numero comprendido entre 0 y 10)");
+            notaTeoria = prompt("introduce la calificacion de la parte teorica");
+            }
+            actitud = prompt("introduce la calificacion de la actitud");
+            while (isNaN(actitud) || actitud < 0 || actitud > 10 || actitud.length <= 0) {
+            alert("No es una nota valida (numero comprendido entre 0 y 10)");
+            actitud = prompt("introduce la calificacion de la actitud");
+            }
+            notaPractica = parseInt(notaPractica);
+            notaTeoria = parseInt(notaTeoria);
+            actitud = parseInt(actitud);
+            if (text == undefined) {
+            text = ("Nombre: " + nomAlumno + "</br>Expediente: " + numexp + "</br>Practica: " + notaPractica + "</br>Teoria: " + notaTeoria + "</br>Actitud: " + actitud + "</br>Media Alumno: " + (
+                    ((notaPractica + notaTeoria + actitud) / 3)
+                    ) + "</br></br></br></br></br>");
+            } else {
+            text += ("Nombre: " + nomAlumno + "</br>Expediente: " + numexp + "</br>Practica: " + notaPractica + "</br>Teoria: " + notaTeoria + "</br>Actitud: " + actitud + "</br>Media Alumno: " + (
+                    ((notaPractica + notaTeoria + actitud) / 3)
+                    ) + "</br></br></br></br></br>");
+            } mediaPractica += notaPractica;
+            mediaTeoria += notaTeoria;
+            mediaActitud += actitud;
+            mediaTotal += (notaPractica + notaTeoria + actitud) / 3;
+            }
+            text += ("</br></br>La media total es: " + (
+                    mediaTotal / numAlumnos
+                    ) + "</br></br></br>La media de Practicas es: " + (
+                    mediaPractica / numAlumnos
+                    ) + "</br></br></br>La media de Teoria es: " + (
+                    mediaTeoria / numAlumnos
+                    ) + "</br></br></br>La media de Actitud es: " + (
+                    mediaActitud / numAlumnos
+                    ) + "</br></br></br>La media total es: " + (
+                    mediaTotal / numAlumnos
+                    ));
+            document.write(text);
+            }</script><h1>
+            <a href="javascript:funcion7()">Llamar función7</a></h1><br/><script>
+                function funcion7() {
+                var num1,
+                        num2,
+                        multiplos = "multiplos: ";
+                num1 = prompt("Introduce el numero 1");
+                if (isNaN(num1)) {
+                alert("no es un numero");
+                } else {
+                num1 = parseInt(num1);
+                num2 = prompt("Introduce el numero 2");
+                if (isNaN(num2)) {
+                alert("no es un numero");
+                } else {
+                num2 = parseInt(num2);
+                if (num2 >= num1) {
+                for (let index = num1 + 1; index < num2; index++) {
+                if (index % 2 == 0) {
+                multiplos = (multiplos + index + " </br>");
+                }
+                }
+                document.write("Los multiplos de 2 entre " + num1 + " y " + num2 + " son: </br>" + multiplos);
+                } else {
+                alert("Imposible ejecutar, el segundo numero debe ser mayor");
+                }
+                }
+                }
+        </script>
+    </body>
+</html>

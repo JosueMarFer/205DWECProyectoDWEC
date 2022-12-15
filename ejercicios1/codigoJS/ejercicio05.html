@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E5</title>
+    </head>
+    <body>
+        <script>
+            var intento = 0,
+                    passSave = 123456;
+            var pass;
+            do {
+                pass = prompt("Introduce una contraseña");
+                if (pass.length == 6) {
+                    parseInt(pass);
+                    if (isNaN(pass)) {
+                        alert("no es un numero");
+                    } else {
+                        if (pass == passSave) {
+                            alert("Contraseña Correcta");
+                            break;
+                        } else {
+                            alert("Contraseña Incorrecta");
+                            intento++
+                        }
+                    }
+                } else {
+                    alert("Contraseña muy larga o muy corta");
+                }
+            } while (intento < 3)
+        </script>
+    </body>
+</html>

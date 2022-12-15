@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E3</title>
+    </head>
+    <body>
+        <script>
+            let edad = prompt("introduce la edad numero 1");
+            let sexo = prompt("introduce el sexo numero 1");
+            var text = "1 " + edad + " " + sexo + " </br> ";
+            for (let index = 1; index < 10; index++) {
+                let edad = prompt("introduce la edad numero " + (
+                        index + 1
+                        ));
+                let sexo = prompt("introduce el sexo numero " + (
+                        index + 1
+                        ));
+                text = text + (index + " " + edad + " " + sexo + " </br> ");
+            }
+            document.write(text);
+        </script>
+    </body>
+</html>

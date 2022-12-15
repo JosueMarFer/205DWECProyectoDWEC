@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E2</title>
+    </head>
+    <body>
+        <script>
+            var numero = prompt("Introduce el numero");
+            while (isNaN(numero) || numero.length <= 0 || numero == undefined) {
+                alert("No es un numero");
+                numero = prompt("Introduce el numero");
+            }
+            numero = parseInt(numero);
+            var t1, t2, t3, t4;
+            for (let index1 = 0; index1 < numero; index1++) {
+                for (let index2 = 0; index2 <= index1; index2++) {
+                    if (t1 == undefined) {
+                        t1 = "* ";
+                    } else {
+                        t1 += "* ";
+                    }
+                }
+                t1 += "<br>";
+            }
+            for (let index1 = 0; index1 < numero; index1++) {
+                for (let index2 = numero; index2 > index1; index2--) {
+                    if (t2 == undefined) {
+                        t2 = "* ";
+                    } else {
+                        t2 += "* ";
+                    }
+                }
+                t2 += "<br>";
+            }
+            for (let index1 = 0; index1 < numero; index1++) {
+                for (let index2 = 0; index2 <= numero - index1; index2++) {
+                    if (t3 == undefined) {
+                        t3 = "&nbsp";
+                    } else {
+                        t3 += "&nbsp";
+                    }
+                }
+                for (let index3 = 0; index3 <= index1; index3++) {
+                    if (t3 == undefined) {
+                        t3 = "* ";
+                    } else {
+                        t3 += "* ";
+                    }
+                }
+                t3 += "<br>";
+            }
+            for (let index1 = 0; index1 < numero; index1++) {
+                for (let index2 = 0; index2 <= index1; index2++) {
+                    if (t4 == undefined) {
+                        t4 = "&nbsp";
+                    } else {
+                        t4 += "&nbsp";
+                    }
+                }
+                for (let index2 = numero; index2 > index1; index2--) {
+                    if (t4 == undefined) {
+                        t4 = "* ";
+                    } else {
+                        t4 += "* ";
+                    }
+                }
+                t4 += "<br>";
+            }
+            document.write(
+                    "<style> body { font-family: monospace; }</style>" +
+                    "<h2 >Triangulo1</h2>" +
+                    t1 +
+                    "<h2>Triangulo2</h2>" +
+                    t2 +
+                    "<h2>Triangulo3</h2>" +
+                    t3 +
+                    "<h2>Triangulo4</h2>" +
+                    t4
+                    );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E5</title>
+    </head>
+    <body>
+        <script>
+            for (let index = 0; index < 2000; index++) {
+                let v1 = parseInt(Math.random() * 256);
+                let v2 = parseInt(Math.random() * 256);
+                let v3 = parseInt(Math.random() * 256);
+                let v4 = parseInt(Math.random() * 101);
+                let v5 = parseInt(Math.random() * 101);
+                document.write(
+                        `<div${index} style="background-color:rgb(${v1},${v2},${v3});position:fixed;width:40px;height:40px;top:${v4}%;left:${v5}%;"></div>`
+                        );
+            }
+        </script>
+    </body>
+</html>

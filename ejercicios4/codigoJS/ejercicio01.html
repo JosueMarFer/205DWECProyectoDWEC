@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E1</title>
+    </head>
+    <body>
+        <script>
+            function funcionSolicitarNumero() {
+                let numero = prompt("Introduce el numero");
+                while (numero == null || isNaN(numero) || numero.length < 0 || numero == undefined) {
+                    if (numero == null) {
+                        alert("Funcion cancelada...");
+                        break;
+                    } else {
+                        alert("No es un numero");
+                        numero = prompt("Introduce el numero");
+                    }
+                }
+                return numero;
+            }
+
+            function funcionFibonacciIterativa(num) {
+                let arrayFibonacciIterativo = [];
+                let acumulador = 1,
+                        acumuladorAnterior = 0,
+                        variableAuxiliar;
+
+                for (let index = 0; index < num; index++) {
+                    arrayFibonacciIterativo[index] = acumuladorAnterior;
+
+                    variableAuxiliar = acumulador;
+                    acumulador += acumuladorAnterior;
+                    acumuladorAnterior = variableAuxiliar;
+                }
+
+                return arrayFibonacciIterativo.join(", ");
+            }
+
+            function funcionFibonacciRecursiva(num) {
+                arrayFibonacciRecursivo = [];
+
+                function funcionFibonacciR(num) {
+                    if (num < 2) {
+                        return num;
+                    } else {
+                        return funcionFibonacciR(num - 1) + funcionFibonacciR(num - 2);
+                    }
+                }
+                for (let index = num - 1; index >= 0; index--) {
+                    arrayFibonacciRecursivo.push(funcionFibonacciR(index));
+                }
+                return arrayFibonacciRecursivo.reverse().join(", ");
+            }
+
+            numero = funcionSolicitarNumero();
+            if (numero != 0) {
+                document.write("El resultado con la funcion iterativa es: " + funcionFibonacciIterativa(numero));
+                document.write("<br>");
+                document.write("El resultado con la funcion recursiva es: " + funcionFibonacciRecursiva(numero));
+            }
+        </script>
+    </body>
+</html>

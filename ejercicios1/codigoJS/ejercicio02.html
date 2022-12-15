@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E2</title>
+    </head>
+    <body>
+        <script>
+                var numero = parseInt(prompt("Introduce un numero"));
+                if (isNaN(numero)) {
+                    alert("no es un numero");
+                } else {
+                    var primo = true;
+                    if (numero % 2 == 0) {
+                        var par = true;
+                    } else {
+                        var par = false;
+                    }
+                    for (let index = 2; index < numero; index++) {
+                        if (numero % index == 0) {
+                            primo = false;
+                        }
+                    }
+                    if (par == true) {
+                        alert(numero + " es par");
+                    } else {
+                        alert(numero + " no es par");
+                    }
+                    if (primo == true) {
+                        alert(numero + " es primo");
+                    } else {
+                        alert(numero + " no es primo");
+                    }
+                }
+        </script>
+    </body>
+</html>

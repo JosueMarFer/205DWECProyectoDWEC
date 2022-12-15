@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E4</title>
+    </head>
+    <body>
+        <script>
+            var contador = 0;
+            document.write(
+                    " <style> table {border-color: black; border-style: solid; width: 100%;} "
+                    );
+            document.write(" tr {border-color: black; border-style: solid;} ");
+            document.write(" .grey {background-color: silver;} ");
+            document.write(
+                    " td {border-color: black; border-style: solid;} </style> "
+                    );
+            document.write("<table>");
+            do {
+                document.write("<tr>");
+                for (let index1 = 0; index1 < 8; index1++) {
+                    contador++;
+                    document.write('<td class="grey"> ' + contador + " </td>");
+                    document.write("<td> " + "&#" + contador + " </td>");
+                }
+                document.write("</tr>");
+            } while (contador < 1000);
+            document.write("</table>");
+        </script>
+    </body>
+</html>

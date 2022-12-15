@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E3</title>
+    </head>
+    <body>
+        <script>
+            let validateName = true;
+            let name = prompt("Introduce el nombre");
+            if (name != null) {
+                for (let index = 0; index < name.length; index++) {
+                    if (
+                            (name.charCodeAt(index) >= 48 && name.charCodeAt(index) <= 57) ||
+                            (name.charCodeAt(index) >= 97 && name.charCodeAt(index) <= 122)
+                            ) {
+                    } else {
+                        validateName = false;
+                    }
+                }
+            }
+            while (name == null || !isNaN(name) || name.length <= 0 || name == undefined || !validateName) {
+                validateName = true;
+                if (name == null) {
+                    alert("Funcion cancelada...");
+                    break;
+                } else {
+                    for (let index = 0; index < name.length; index++) {
+                        if (
+                                (name.charCodeAt(index) >= 48 && name.charCodeAt(index) <= 57) ||
+                                (name.charCodeAt(index) >= 97 && name.charCodeAt(index) <= 122)
+                                ) {
+                        } else {
+                            validateName = false;
+                        }
+                    }
+                    if (!isNaN(name)) {
+                        alert("No es un nombre");
+                        name = prompt("Introduce el nombre");
+                        validateName = false;
+                    } else {
+                        if (!validateName) {
+                            alert("Nombre no valido [0-9][a-z]");
+                            name = prompt("Introduce el nombre");
+                            validateName = false;
+                        }
+                    }
+                }
+            }
+            if (name != null) {
+                let validatePassword = false,
+                        contieneMayus = false,
+                        contieneEntero = false,
+                        contieneMinus = false,
+                        contieneCaracter = false;
+                let password = prompt("Introduce la contraseña");
+                if (password != null) {
+                    for (let index = 0; index < password.length; index++) {
+                        if (password.charCodeAt(index) >= 65 && password.charCodeAt(index) <= 90) {
+                            contieneMayus = true;
+                        }
+                        if (password.charCodeAt(index) >= 48 && password.charCodeAt(index) <= 57) {
+                            contieneEntero = true;
+                        }
+                        if (password.charCodeAt(index) >= 97 && password.charCodeAt(index) <= 122) {
+                            contieneMinus = true;
+                        }
+                        if (
+                                (password.charCodeAt(index) >= 65 && password.charCodeAt(index) <= 90) ||
+                                (password.charCodeAt(index) >= 48 && password.charCodeAt(index) <= 57) ||
+                                (password.charCodeAt(index) >= 97 && password.charCodeAt(index) <= 122)
+                                ) {
+                        } else {
+                            contieneCaracter = true;
+                        }
+                    }
+                    if (contieneMayus && contieneEntero && contieneMinus && contieneCaracter) {
+                        validatePassword = true;
+                    }
+                }
+                while (password == null || !isNaN(password) || password.length < 8 || password == undefined || !validatePassword) {
+                    validatePassword = false;
+                    (contieneMayus = false),
+                            (contieneEntero = false),
+                            (contieneMinus = false),
+                            (contieneCaracter = false);
+                    if (password == null) {
+                        alert("Funcion cancelada...");
+                        break;
+                    } else {
+                        for (let index = 0; index < password.length; index++) {
+                            if (password.charCodeAt(index) >= 65 && password.charCodeAt(index) <= 90) {
+                                contieneMayus = true;
+                            }
+                            if (password.charCodeAt(index) >= 48 && password.charCodeAt(index) <= 57) {
+                                contieneEntero = true;
+                            }
+                            if (password.charCodeAt(index) >= 97 && password.charCodeAt(index) <= 122) {
+                                contieneMinus = true;
+                            }
+                            if (
+                                    (password.charCodeAt(index) >= 65 && password.charCodeAt(index) <= 90) ||
+                                    (password.charCodeAt(index) >= 48 && password.charCodeAt(index) <= 57) ||
+                                    (password.charCodeAt(index) >= 97 && password.charCodeAt(index) <= 122)
+                                    ) {
+                            } else {
+                                contieneCaracter = true;
+                            }
+                        }
+                        if (contieneMayus && contieneEntero && contieneMinus && contieneCaracter) {
+                            validatePassword = true;
+                        }
+                        if (password.length >= 8) {
+                            if (!isNaN(password)) {
+                                alert("No es una contraseña");
+                                password = prompt("Introduce la contraseña");
+                            } else {
+                                if (!validatePassword) {
+                                    alert("Contraseña no valida, debe contener una minuscula, una mayuscula, un entero y un caracter especial.");
+                                    password = prompt("Introduce la contraseña");
+                                }
+                            }
+                        } else {
+                            alert("Contraseña demasiado corta");
+                            password = prompt("Introduce la contraseña");
+                        }
+                    }
+                }
+                if (validateName && validatePassword) {
+                    alert("Contraseña guardada");
+                }
+            }
+        </script>
+    </body>
+</html>

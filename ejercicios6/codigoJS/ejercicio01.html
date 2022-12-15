@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E1</title>
+        <script src="../../core/libreria.js"></script>
+    </head>
+    <body>
+        <script>
+            class Granja {
+                #codigoGranja;
+                constructor(codigo) {
+                    let expr = /^[aeiouAEIOU][0-9]{10}[a-zA-Z]$/;
+                    while (!expr.test(codigo) && codigo != null) {
+                        alert("El codigo no corresponde con el patron");
+                        codigo = funcionSolicitarCadena(
+                                "Introduce el codigo de la granja (una vocal diez numeros, una letra)",
+                                12,
+                                12
+                                );
+                    }
+                    if (codigo != null) {
+                        this.#codigoGranja = codigo;
+                    } else {
+                        alert("Saliendo del programa...");
+                        exit();
+                    }
+                    this.vacas = [];
+                    this.gallinas = [];
+                }
+
+                darComerVacas(kg) {
+                    for (const iterator of this.vacas) {
+                        iterator.comer(kg / this.vacas.length);
+                    }
+                    if (kg % this.vacas.length != 0) {
+                        alert("Sobran " + (kg % this.vacas.length) + " kg de comida");
+                    }
+                }
+
+                ordeñarVacas() {
+                    for (const iterator of this.vacas) {
+                        iterator.ordeñar();
+                    }
+                }
+
+                darComerGallinas(kg) {
+                    for (const iterator of this.gallinas) {
+                        iterator.comer(kg / this.gallinas.length);
+                    }
+                    if (kg % this.gallinas.length != 0) {
+                        alert("Sobran " + (kg % this.vacas.length) + " kg de comida");
+                    }
+                }
+
+                comprarVacas(num) {
+                    for (let index = 0; index < num; index++) {
+                        let nombre = funcionSolicitarPalabra("Introduce el nombre de la vaca");
+                        let vaca = new Vaca(nombre);
+                        let duplicado = false;
+                        do {
+                            for (const iterator of this.vacas) {
+                                if (this.idAnimal == iterator.idAnimal) {
+                                    duplicado = true;
+                                }
+                            }
+                            if (duplicado) {
+                                index.cambiarID();
+                            }
+                        } while (duplicado);
+                        this.vacas.push(vaca);
+                    }
+                }
+
+                comprarGallinas(num) {
+                    for (let index = 0; index < num; index++) {
+                        let nombre = funcionSolicitarPalabra("Introduce el nombre de la gallina");
+                        let gallina = new Gallina(nombre);
+                        let duplicado = false;
+                        do {
+                            for (const iterator of this.gallinas) {
+                                if (this.idAnimal == iterator.idAnimal) {
+                                    duplicado = true;
+                                }
+                            }
+                            if (duplicado) {
+                                index.cambiarID();
+                            }
+                        } while (duplicado);
+                        this.gallinas.push(gallina);
+                    }
+                }
+
+                venderVacas(num) {
+                    for (let index = 0; index < num; index++) {
+                        this.vacas.shift();
+                    }
+                }
+
+                venderGallinas(num) {
+                    for (let index = 0; index < num; index++) {
+                        this.gallinas.shift();
+                    }
+                }
+                toString() {
+                    alert(
+                            "El codigo de la granja es: " +
+                            this.#codigoGranja +
+                            "\nContiene: " +
+                            this.vacas.length +
+                            " vacas\nContiene: " +
+                            this.gallinas.length +
+                            " gallinas"
+                            );
+                }
+            }
+
+            class Animal {
+                constructor(nombre, numPatas, enfermo = false) {
+                    let numeroSinCeros = parseInt(Math.random() * 99999 + 1);
+                    numeroSinCeros = numeroSinCeros.toString();
+                    for (let index = numeroSinCeros.length; index < 5; index++) {
+                        numeroSinCeros = "0".concat(numeroSinCeros);
+                    }
+                    this.idAnimal = numeroSinCeros;
+                    this.nombre = nombre;
+                    this.numPatas = numPatas;
+                    this.enfermo = enfermo;
+                }
+
+                cambiarID() {
+                    let numeroSinCeros = parseInt(Math.random() * 99999 + 1);
+                    numeroSinCeros = numeroSinCeros = numeroSinCeros.toString();
+                    for (let index = numeroSinCeros.length; index < 5; index++) {
+                        numeroSinCeros = "0".concat(numeroSinCeros);
+                    }
+                    this.idAnimal = numeroSinCeros;
+                }
+
+                toString() {
+                    alert("El nombre es: " + this.nombre + " y su codigo es: " + this.idAnimal);
+                }
+
+                curar() {
+                    if ((this.enfermo = true)) {
+                        this.enfermo = false;
+                    } else {
+                        alert("El animal no esta enfermo");
+                    }
+                }
+            }
+
+            class Vaca extends Animal {
+                constructor(nombre, enfermo) {
+                    super(nombre, 4, enfermo);
+                    this.litrosLeche = 1;
+                }
+
+                comer(kg) {
+                    for (let index = 0; index < kg; index++) {
+                        this.litrosLeche += 0.5;
+                        if (this.litrosLeche == 18) {
+                            alert("La vaca: " + this.nombre + " con codigo: " + this.idAnimal + " tiene que ser ordeñada");
+                        } else if (this.litrosLeche == 28) {
+                            alert("La vaca: " + this.nombre + " con codigo: " + this.idAnimal + " ha enfermado");
+                            this.enfermo = true;
+                            break;
+                        }
+                    }
+                }
+
+                ordeñar() {
+                    if (this.enfermo) {
+                        alert("La vaca: " + this.nombre + " con codigo: " + this.idAnimal + " no puede ser ordeñada");
+                    } else {
+                        alert(
+                                "La vaca: " +
+                                this.nombre +
+                                " con codigo: " +
+                                this.idAnimal +
+                                " ha sido ordeñada y ha producido " +
+                                (this.litrosLeche - 1)
+                                );
+                        this.litrosLeche = 1;
+                    }
+                }
+
+                curar() {
+                    super.curar();
+                    this.litrosLeche = 1;
+                }
+            }
+
+            class Gallina extends Animal {
+                constructor(nombre, enfermo) {
+                    super(nombre, 2, enfermo);
+                    this.estadoHuevo = 0;
+                }
+
+                comer(kg) {
+                    for (let index = 0; index < kg; index++) {
+                        this.estadoHuevo += 20;
+                        if (this.estadoHuevo == 100) {
+                            this.ponerHuevo();
+                        }
+                    }
+                }
+
+                ponerHuevo() {
+                    if (this.enfermo) {
+                        alert(
+                                "La gallina: " +
+                                this.nombre +
+                                " con codigo: " +
+                                this.idAnimal +
+                                " no puede poner huevos por que esta enferma"
+                                );
+                    } else {
+                        this.estadoHuevo = 0;
+                        alert("La gallina: " + this.nombre + " con codigo: " + this.idAnimal + " ha puesto un huevo");
+                    }
+                }
+            }
+
+            let cod = funcionSolicitarCadena("Introduce el codigo de la granja (una vocal, diez numeros, una letra)", 12, 12);
+            let num;
+            let granja1 = new Granja(cod);
+            var key;
+            do {
+                key = funcionSolicitarNumero("Introduce la opción", 1, 10);
+                switch (key) {
+                    case 1:
+                        granja1.toString();
+                        break;
+                    case 2:
+                        num = funcionSolicitarNumero("Introduce el numero de vacas a comprar", 1);
+                        granja1.comprarVacas(num);
+                        break;
+                    case 3:
+                        num = funcionSolicitarNumero("Introduce el numero de gallinas a comprar", 1);
+                        granja1.comprarGallinas(num);
+                        break;
+                    case 4:
+                        num = funcionSolicitarNumero("Introduce el numero de vacas a vender", 1);
+                        granja1.venderVacas(num);
+                        break;
+                    case 5:
+                        num = funcionSolicitarNumero("Introduce el numero de gallinas a vender", 1);
+                        granja1.venderGallinas(num);
+                        break;
+                    case 6:
+                        num = funcionSolicitarNumero("Introduce los kg de comida", 1);
+                        granja1.darComerVacas(num);
+                        break;
+                    case 7:
+                        num = funcionSolicitarNumero("Introduce los kg de comida", 1);
+                        granja1.darComerGallinas(num);
+                        break;
+                    case 8:
+                        granja1.ordeñarVacas();
+                        break;
+                    case 9:
+                        for (const iterator of granja1.vacas) {
+                            if (iterator.enfermo) {
+                                alert("La vaca con codigo : " + iterator.idAnimal + " esta enferma");
+                            }
+                        }
+                        for (const iterator of granja1.gallinas) {
+                            if (iterator.enfermo) {
+                                alert("La gallina con codigo : " + iterator.idAnimal + " esta enferma");
+                            }
+                        }
+                        break;
+                    case 10:
+                        for (const iterator of granja1.vacas) {
+                            if (iterator.enfermo) {
+                                iterator.enfermo = false;
+                                alert("La vaca con codigo : " + iterator.idAnimal + " ha sido curada");
+                                iterator.litrosLeche = 1;
+                            }
+                        }
+                        for (const iterator of granja1.gallinas) {
+                            if (iterator.enfermo) {
+                                iterator.enfermo = false;
+                                alert("La gallina con codigo : " + iterator.idAnimal + " ha sido curada");
+                            }
+                        }
+                }
+            } while (key !== null);
+            alert("Saliendo del programa...");
+        </script>     
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E2</title>
+    </head>
+    <body>
+        <script>
+            let mensaje = prompt("Introduce el mensaje"),
+                    clave,
+                    mensajeCifrado;
+            while (mensaje == null || !isNaN(mensaje) || mensaje.length <= 0 || mensaje == undefined) {
+                if (mensaje == null) {
+                    alert("Funcion cancelada...");
+                    break;
+                } else {
+                    alert("No es un mensaje");
+                    mensaje = prompt("Introduce el mensaje");
+                }
+            }
+
+            if (mensaje != null) {
+                clave = prompt("Introduce el numero");
+                while (clave == null || isNaN(clave) || clave.length <= 0 || clave == undefined) {
+                    if (clave == null) {
+                        alert("Funcion cancelada...");
+                        break;
+                    } else {
+                        alert("No es un numero");
+                        clave = prompt("Introduce el numero");
+                    }
+                }
+            }
+            if (clave != null) {
+                clave = parseInt(clave);
+                for (let index = 0; index < mensaje.length; index++) {
+                    if (mensajeCifrado == undefined) {
+                        mensajeCifrado = String.fromCharCode(parseInt(mensaje.charCodeAt(index)) + clave);
+                    } else {
+                        mensajeCifrado += String.fromCharCode(parseInt(mensaje.charCodeAt(index)) + clave);
+                    }
+                }
+                document.write("El mensaje es: " + mensaje);
+                document.write("<br>");
+                document.write("El mensaje cifrado es: " + mensajeCifrado);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E4</title>
+    </head>
+    <body>
+        <script>
+            let palabraArray = [];
+            let palabra = "";
+            while (palabra != null) {
+                let validatepalabra = true;
+                palabra = prompt("Introduce la palabra");
+                if (palabra != null) {
+                    for (let index = 0; index < palabra.length; index++) {
+                        if (
+                                (palabra.charCodeAt(index) >= 65 && palabra.charCodeAt(index) <= 90) ||
+                                (palabra.charCodeAt(index) >= 97 && palabra.charCodeAt(index) <= 122)
+                                ) {
+                        } else {
+                            validatepalabra = false;
+                        }
+                    }
+                }
+                while (palabra == null || !isNaN(palabra) || palabra.length <= 0 || palabra == undefined || !validatepalabra) {
+                    validatepalabra = true;
+                    if (palabra == null) {
+                        alert("Todos los datos introducidos...");
+                        break;
+                    } else {
+                        for (let index = 0; index < palabra.length; index++) {
+                            if (
+                                    (palabra.charCodeAt(index) >= 65 && palabra.charCodeAt(index) <= 90) ||
+                                    (palabra.charCodeAt(index) >= 97 && palabra.charCodeAt(index) <= 122)
+                                    ) {
+                            } else {
+                                validatepalabra = false;
+                            }
+                        }
+                        if (!isNaN(palabra)) {
+                            alert("No es una palabra");
+                            palabra = prompt("Introduce la palabra");
+                            validatepalabra = false;
+                        } else {
+                            if (!validatepalabra) {
+                                alert("palabra no valida [a-z][A-Z]");
+                                palabra = prompt("Introduce la palabra");
+                                validatepalabra = false;
+                            }
+                        }
+                    }
+                }
+                if (palabra != null) {
+                    palabraArray.push(palabra);
+                }
+            }
+
+            let salida = false;
+            while (!salida) {
+                let menu = prompt("Introduce el numero");
+                while (menu == null || isNaN(menu) || menu.length <= 0 || menu == undefined || menu > 9 || menu < 1) {
+                    if (menu == null) {
+                        alert("Funcion cancelada...");
+                        break;
+                    } else {
+                        if (
+                                isNaN(menu) ||
+                                menu.length <= 0 || menu == undefined) {
+                            alert("No es un numero");
+                            menu = prompt("Introduce el numero");
+                        } else {
+                            if (menu < 1 || menu > 9) {
+                                alert("El numero no se encuentra dentro del rango");
+                                menu = prompt("Introduce el numero");
+                            }
+                        }
+                    }
+                }
+                if (menu == null) {
+                    break;
+                }
+                menu = parseInt(menu);
+                switch (menu) {
+                    case 1:
+                        alert(palabraArray[0]);
+                        break;
+                    case 2:
+                        alert(palabraArray[palabraArray.length - 1]);
+                        break;
+                    case 3:
+                        let arrayCompleto;
+                        for (const iterator of palabraArray) {
+                            if (arrayCompleto == null || arrayCompleto == undefined) {
+                                arrayCompleto = iterator;
+                            } else {
+                                arrayCompleto += ", " + iterator;
+                            }
+                        }
+                        alert("El array completo es: " + arrayCompleto);
+                        break;
+                    case 4:
+                        let mayorArray, beforeLenght = 0;
+                        for (const iterator of palabraArray) {
+                            if (mayorArray == null || mayorArray == undefined) {
+                                mayorArray = iterator;
+                                beforeLenght = iterator.length;
+                            } else {
+                                if (iterator.length > beforeLenght
+                                        ) {
+                                    mayorArray = iterator;
+                                    beforeLenght = iterator.length;
+                                } else {
+                                    if (beforeLenght == iterator.length) {
+                                        mayorArray += ", " + iterator;
+                                    }
+                                }
+                            }
+                        }
+                        alert("El mayor elemento del array es: " + mayorArray);
+                        break;
+                    case 5:
+                        let menorArray,
+                                beforeLenght2 = 0;
+                        for (const iterator of palabraArray) {
+                            if (menorArray == null || menorArray == undefined) {
+                                menorArray = iterator;
+                                beforeLenght2 = iterator.length;
+                            } else {
+                                if (iterator.length < beforeLenght2) {
+                                    menorArray = iterator;
+                                    beforeLenght2 = iterator.length;
+                                } else {
+                                    if (beforeLenght2 == iterator.length) {
+                                        menorArray += ", " + iterator;
+                                    }
+                                }
+                            }
+                        }
+                        alert("El menor elemento del array es: " + menorArray);
+                        break;
+                    case 6:
+                        alert("El numero de palabras insertadas son: " + palabraArray.length);
+                        break;
+                    case 7:
+                        let validatepalabraBuscar = true;
+                        let palabraBuscar = prompt("Introduce el nombre");
+                        if (palabraBuscar != null) {
+                            for (let index = 0; index < palabraBuscar.length; index++) {
+                                if (
+                                        (palabraBuscar.charCodeAt(index) >= 65 && palabraBuscar.charCodeAt(index) <= 90) ||
+                                        (palabraBuscar.charCodeAt(index) >= 97 && palabraBuscar.charCodeAt(index) <= 122)
+                                        ) {
+                                } else {
+                                    validatepalabraBuscar = false;
+                                }
+                            }
+                        }
+                        while (
+                                palabraBuscar == null ||
+                                !isNaN(palabraBuscar) ||
+                                palabraBuscar.length <= 0 ||
+                                palabraBuscar == undefined ||
+                                !validatepalabraBuscar
+                                ) {
+                            validatepalabraBuscar = true;
+                            if (palabraBuscar == null) {
+                                alert("Funcion cancelada...");
+                                break;
+                            } else {
+                                for (let index = 0; index < palabraBuscar.length; index++) {
+                                    if (
+                                            (palabraBuscar.charCodeAt(index) >= 65 && palabraBuscar.charCodeAt(index) <= 90) ||
+                                            (palabraBuscar.charCodeAt(index) >= 97 && palabraBuscar.charCodeAt(index) <= 122)
+                                            ) {
+                                    } else {
+                                        validatepalabraBuscar = false;
+                                    }
+                                }
+                                if (!isNaN(palabraBuscar)) {
+                                    alert("No es un nombre");
+                                    palabraBuscar = prompt("Introduce el nombre");
+                                    validatepalabraBuscar = false;
+                                } else {
+                                    if (!validatepalabraBuscar) {
+                                        alert("Nombre no valido [A-Z][a-z]");
+                                        palabraBuscar = prompt("Introduce el nombre");
+                                        validatepalabraBuscar = false;
+                                    }
+                                }
+                            }
+                        }
+                        let indiceprov;
+                        if (palabraArray.includes(palabraBuscar)) {
+                            do {
+                                if (indiceprov == null || indiceprov == undefined) {
+                                    indiceprov = parseInt(palabraArray.indexOf(palabraBuscar));
+                                    indice = palabraArray.indexOf(palabraBuscar);
+                                } else {
+                                    indice += ", " + palabraArray.indexOf(palabraBuscar, indiceprov + 1);
+                                    indiceprov = parseInt(palabraArray.indexOf(palabraBuscar, indiceprov + 1));
+                                }
+                                if (indiceprov == parseInt(palabraArray.lastIndexOf(palabraBuscar))) {
+                                    indiceprov = palabraArray.length;
+                                }
+                            } while (indiceprov < palabraArray.length);
+                            alert("La palabra se encuentra en: " + indice);
+                        } else {
+                            alert("La palabra no ha sido encontrada");
+                        }
+                        break;
+                    case 8:
+                        let arrayClean = new Array();
+                        for (const key in palabraArray) {
+                            if (key == 0) {
+                                arrayClean.push(palabraArray[key]);
+                            } else {
+                                if (!arrayClean.includes(palabraArray[key])) {
+                                    arrayClean.push(palabraArray[key]);
+                                }
+                            }
+                        }
+                        alert("El array sin duplicados es: " + arrayClean.join());
+                        break;
+                    case 9:
+                        alert("El programa ha finalizado. Adios.");
+                        salida = true;
+                        break;
+                }
+            }
+        </script>
+    </body>
+</html>

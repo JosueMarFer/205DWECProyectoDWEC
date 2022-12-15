@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E1</title>
+    </head>
+    <body>
+        <script>
+            let texto = prompt("Introduce el texto");
+            while (!isNaN(texto) || texto.length <= 0 || texto == undefined || texto == null) {
+                if (texto == null) {
+                    alert("Funcion cancelada...");
+                    break;
+                } else {
+                    alert("No es un texto");
+                    texto = prompt("Introduce el texto");
+                }
+            }
+            texto.trim();
+            let capitalText;
+            if (isNaN(texto.charAt(0))) {
+                capitalText = texto.charAt(0).toUpperCase() + " ";
+            }
+            for (let index = 0; index < texto.length; index++) {
+                if (texto.charAt(index) == " ") {
+                    if (isNaN(texto.charAt(index + 1))) {
+                        if (capitalText == undefined) {
+                            capitalText = texto.charAt(index + 1).toUpperCase() + " ";
+                        } else {
+                            capitalText += texto.charAt(index + 1).toUpperCase() + " ";
+                        }
+                    }
+                }
+            }
+            document.write("La cadena es: " + texto);
+            document.write("<br>");
+            document.write("Las primeras letra de cada palabra en mayusculas son: " + capitalText);
+        </script>
+    </body>
+</html>

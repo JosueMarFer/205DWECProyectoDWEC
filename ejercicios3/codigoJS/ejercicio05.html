@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E5</title>
+    </head>
+    <body>
+        <script>
+            function funcion() {
+                const TAM_FILAS = 10;
+                const TAM_COLUMNAS = 10;
+
+                function crearTablero() {
+                    let tablero = new Array(TAM_FILAS);
+
+                    for (let index = 0; index < TAM_FILAS; index++) {
+                        tablero[index] = new Array(TAM_COLUMNAS);
+                        for (let j = 0; j < TAM_COLUMNAS; j++) {
+                            tablero[index][j] = false;
+                        }
+                    }
+                    return tablero;
+                }
+
+                function nadaAlrededor(filaProv, columnaProv, tablero) {
+                    let posicionValida = true;
+                    if (!(filaProv == 0 || columnaProv == 0 || filaProv == 9 || columnaProv == 9)) {
+                        for (let index = filaProv - 1; index <= filaProv + 1; index++) {
+                            for (let index2 = columnaProv - 1; index2 <= columnaProv + 1; index2++) {
+                                if (tablero[index][index2] == true) {
+                                    posicionValida = false;
+                                }
+                            }
+                        }
+                    } else {
+                        if (
+                                (filaProv == 0 && columnaProv == 0) ||
+                                (filaProv == 0 && columnaProv == 9) ||
+                                (filaProv == 9 && columnaProv == 9) ||
+                                (filaProv == 9 && columnaProv == 0)
+                                ) {
+                            if (filaProv == 0 && columnaProv == 0) {
+                                for (let index = filaProv; index <= filaProv + 1; index++) {
+                                    for (let index2 = columnaProv; index2 <= columnaProv + 1; index2++) {
+                                        if (tablero[index][index2] == true) {
+                                            posicionValida = false;
+                                        }
+                                    }
+                                }
+                            }
+                            if (filaProv == 0 && columnaProv == 9) {
+                                for (let index = filaProv; index <= filaProv + 1; index++) {
+                                    for (let index2 = columnaProv; index2 <= columnaProv + 1; index2++) {
+                                        if (tablero[index][index2] == true) {
+                                            posicionValida = false;
+                                        }
+                                    }
+                                }
+                            }
+                            if (filaProv == 9 && columnaProv == 9) {
+                                for (let index = filaProv - 1; index <= filaProv; index++) {
+                                    for (let index2 = columnaProv - 1; index2 <= columnaProv; index2++) {
+                                        if (tablero[index][index2] == true) {
+                                            posicionValida = false;
+                                        }
+                                    }
+                                }
+                            }
+                            if (filaProv == 9 && columnaProv == 0) {
+                                for (let index = filaProv - 1; index <= filaProv; index++) {
+                                    for (let index2 = columnaProv; index2 <= columnaProv + 1; index2++) {
+                                        if (tablero[index][index2] == true) {
+                                            posicionValida = false;
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            if (filaProv == 0) {
+                                for (let index = filaProv; index <= filaProv + 1; index++) {
+                                    for (let index2 = columnaProv - 1; index2 <= columnaProv + 1; index2++) {
+                                        if (tablero[index][index2] == true) {
+                                            posicionValida = false;
+                                        }
+                                    }
+                                }
+                            }
+                            if (filaProv == 9) {
+                                for (let index = filaProv - 1; index <= filaProv; index++) {
+                                    for (let index2 = columnaProv - 1; index2 <= columnaProv + 1; index2++) {
+                                        if (tablero[index][index2] == true) {
+                                            posicionValida = false;
+                                        }
+                                    }
+                                }
+                            }
+                            if (columnaProv == 0) {
+                                for (let index = filaProv - 1; index <= filaProv + 1; index++) {
+                                    for (let index2 = columnaProv; index2 <= columnaProv + 1; index2++) {
+                                        if (tablero[index][index2] == true) {
+                                            posicionValida = false;
+                                        }
+                                    }
+                                }
+                            }
+                            if (columnaProv == 9) {
+                                for (let index = filaProv - 1; index <= filaProv + 1; index++) {
+                                    for (let index2 = columnaProv - 1; index2 <= columnaProv; index2++) {
+                                        if (tablero[index][index2] == true) {
+                                            posicionValida = false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return posicionValida;
+                }
+
+                function pintarTablero(tablero) {
+                    let tableropintado = "<style>td {border: solid black 0.1em;width:3em;height:3em;}</style><table>";
+                    for (let index = 0; index < TAM_FILAS; index++) {
+                        tableropintado += "<tr>";
+                        for (let index2 = 0; index2 < TAM_COLUMNAS; index2++) {
+                            if (tablero[index][index2] == true) {
+                                tableropintado += '<td Style="background-color: black;"></td>';
+                            } else {
+                                tableropintado += '<td Style="background-color: white;"></td>';
+                            }
+                        }
+                        tableropintado += "</tr>";
+                    }
+                    tableropintado += "</table>";
+                    return tableropintado;
+                }
+
+                function aleatorio() {
+                    return parseInt(Math.random() * 10);
+                }
+
+                function fragata(tablero) {
+                    for (let index = 0; index < 2; index++) {
+                        do {
+                            filaProv = aleatorio();
+                            console.log(filaProv);
+                            columnaProv = aleatorio();
+                            console.log(columnaProv);
+                        } while (!nadaAlrededor(filaProv, columnaProv, tablero));
+                        tablero[filaProv][columnaProv] = true;
+                    }
+                }
+                function destructor(tablero) {
+                    let pintado;
+                    for (let index = 0; index < 3; index++) {
+                        pintado = false;
+                        do {
+                            filaProv = aleatorio();
+                            columnaProv = aleatorio();
+                            if (filaProv - 1 >= 0) {
+                                if (nadaAlrededor(filaProv - 1, columnaProv, tablero) && nadaAlrededor(filaProv, columnaProv, tablero)) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv - 1][columnaProv] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                            if (columnaProv - 1 >= 0) {
+                                if (nadaAlrededor(filaProv, columnaProv - 1, tablero) && nadaAlrededor(filaProv, columnaProv, tablero)) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv][columnaProv - 1] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                            if (filaProv + 1 <= 9) {
+                                if (nadaAlrededor(filaProv + 1, columnaProv, tablero) && nadaAlrededor(filaProv, columnaProv, tablero)) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv + 1][columnaProv] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                            if (columnaProv + 1 <= 9) {
+                                if (nadaAlrededor(filaProv, columnaProv + 1, tablero) && nadaAlrededor(filaProv, columnaProv, tablero)) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv][columnaProv + 1] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                        } while (!pintado);
+                    }
+                }
+                function acorazado(tablero) {
+                    let pintado;
+                    for (let index = 0; index < 3; index++) {
+                        pintado = false;
+                        do {
+                            filaProv = aleatorio();
+                            columnaProv = aleatorio();
+                            if (filaProv - 2 >= 0) {
+                                if (
+                                        nadaAlrededor(filaProv - 2, columnaProv, tablero) &&
+                                        nadaAlrededor(filaProv - 1, columnaProv, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv, tablero)
+                                        ) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv - 2][columnaProv] = true;
+                                    tablero[filaProv - 1][columnaProv] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                            if (columnaProv - 2 >= 0) {
+                                if (
+                                        nadaAlrededor(filaProv, columnaProv - 2, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv - 1, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv, tablero)
+                                        ) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv][columnaProv - 2] = true;
+                                    tablero[filaProv][columnaProv - 1] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                            if (filaProv + 2 <= 9) {
+                                if (
+                                        nadaAlrededor(filaProv + 2, columnaProv, tablero) &&
+                                        nadaAlrededor(filaProv + 1, columnaProv, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv, tablero)
+                                        ) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv + 2][columnaProv] = true;
+                                    tablero[filaProv + 1][columnaProv] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                            if (columnaProv + 2 <= 9) {
+                                if (
+                                        nadaAlrededor(filaProv, columnaProv + 2, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv + 1, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv, tablero)
+                                        ) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv][columnaProv + 2] = true;
+                                    tablero[filaProv][columnaProv + 1] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                        } while (!pintado);
+                    }
+                }
+                function portaviones(tablero) {
+                    let pintado;
+                    for (let index = 0; index < 2; index++) {
+                        pintado = false;
+                        do {
+                            filaProv = aleatorio();
+                            columnaProv = aleatorio();
+                            if (filaProv - 3 >= 0) {
+                                if (
+                                        nadaAlrededor(filaProv - 3, columnaProv, tablero) &&
+                                        nadaAlrededor(filaProv - 2, columnaProv, tablero) &&
+                                        nadaAlrededor(
+                                                filaProv - 1, columnaProv, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv, tablero)
+                                        ) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv - 3][columnaProv] = true;
+                                    tablero[filaProv - 2][columnaProv] = true;
+                                    tablero[filaProv - 1][columnaProv] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                            if (columnaProv - 3 >= 0) {
+                                if (
+                                        nadaAlrededor(filaProv, columnaProv - 3, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv - 2, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv - 1, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv, tablero)
+                                        ) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv][columnaProv - 3] = true;
+                                    tablero[filaProv][columnaProv - 2] = true;
+                                    tablero[filaProv][columnaProv - 1] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                            if (filaProv + 3 <= 9) {
+                                if (
+                                        nadaAlrededor(filaProv + 3, columnaProv, tablero) &&
+                                        nadaAlrededor(filaProv + 2, columnaProv, tablero) &&
+                                        nadaAlrededor(
+                                                filaProv + 1, columnaProv, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv, tablero)
+                                        ) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv + 3][columnaProv] = true;
+                                    tablero[filaProv + 2][columnaProv] = true;
+                                    tablero[filaProv + 1][columnaProv] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                            if (columnaProv + 3 <= 9) {
+                                if (
+                                        nadaAlrededor(filaProv, columnaProv + 3, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv + 2, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv + 1, tablero) &&
+                                        nadaAlrededor(filaProv, columnaProv, tablero)
+                                        ) {
+                                    tablero[filaProv][columnaProv] = true;
+                                    tablero[filaProv][columnaProv + 3] = true;
+                                    tablero[filaProv][columnaProv + 2] = true;
+                                    tablero[filaProv][columnaProv + 1] = true;
+                                    pintado = true;
+                                    break;
+                                }
+                            }
+                        } while (!pintado);
+                    }
+                }
+                var tablero = crearTablero();
+                portaviones(tablero);
+                acorazado(tablero);
+                destructor(tablero);
+                fragata(tablero);
+                tableropintado = pintarTablero(tablero);
+                document.write(tableropintado);
+            }
+        </script>
+    </body>
+</html>
