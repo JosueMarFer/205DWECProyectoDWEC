@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>E1</title>
+    <style>
+        .miClase {
+            color: red;
+        }
+    </style>
+    <script src="../../core/libreria.js"></script>
+    <script>
+        window.addEventListener("load", inicio);
+
+        function inicio() {
+            document.getElementById("crearParrafo").addEventListener("click", crearParrafo);
+            document.getElementById("crearImagen").addEventListener("click", crearImagen);
+            document.getElementById("borrarUltimo").addEventListener("click", borrarUltimo);
+            document.getElementById("borrarPrimero").addEventListener("click", borrarPrimero);
+            document.getElementById("sustituirPrimero").addEventListener("click", sustituirPrimero);
+        }
+
+        function crearParrafo() {
+            let texto = document.getElementById("texto").value;
+            let parrafo = document.createElement("p");
+            parrafo.innerHTML = texto;
+            document.getElementById("div1").appendChild(parrafo);
+            document.getElementById("texto").focus();
+            document.getElementById("texto").value = "";
+        }
+
+        function crearImagen() {
+            let url = funcionSolicitarCadena("Introduce la URL")
+            let imagen = document.createElement("img");
+            imagen.setAttribute("src", url);
+            imagen.setAttribute("width", "200px");
+            imagen.setAttribute("height", "200px");
+            document.getElementById("div1").appendChild(imagen);
+        }
+
+        function borrarUltimo() {
+            document.getElementById("div1").lastElementChild.remove();
+        }
+
+        function borrarPrimero() {
+            document.getElementById("div1").firstElementChild.remove();
+        }
+
+        function sustituirPrimero() {
+            let elemento = document.getElementById("div1");
+            let texto = document.getElementById("texto").value;
+            let parrafoSustituto = document.createElement("p");
+            parrafoSustituto.innerHTML = texto;
+            elemento.replaceChild(parrafoSustituto, elemento.firstChild);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <br />
+    <textarea id="texto"></textarea>
+    <br />
+    <button id="crearParrafo">Crear parrafo</button>
+    <button id="crearImagen">Crear imagen</button>
+    <button id="borrarUltimo">Borrar último elemento</button>
+    <button id="borrarPrimero">Borrar primer elemento</button>
+    <button id="sustituirPrimero">Sustituir primer párrafo</button>
+
+</body>
+
+</html>

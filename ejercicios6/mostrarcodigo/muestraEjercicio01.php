@@ -24,7 +24,7 @@
         ?>
       </div>
       <div class="return2">
-        <a href="../indexEjercicios1.php"><img src="../../webroot/images/back.png" alt="Imagen back"></a>
+        <a href="../indexEjercicios6.php"><img src="../../webroot/images/back.png" alt="Imagen back"></a>
       </div>
     </main>
     <footer>

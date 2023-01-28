@@ -40,7 +40,7 @@ function funcionSolicitarPalabra(mensaje, tamMin = -Infinity, tamMax = Infinity)
       break;
     } else {
       if (palabra.length < tamMin || palabra.length > tamMax) {
-        alert("La plabra excede o es menor que el tamaño necesario (" + tamMin + "-" + tamMax + ")");
+        alert("La plabra excede o es menor que el tamanyo necesario (" + tamMin + "-" + tamMax + ")");
         palabra = prompt(mensaje);
       } else {
         alert("No es una palabra o contiene caracteres no permitidos");
@@ -76,7 +76,7 @@ function funcionSolicitarCadena(mensaje, tamMin = -Infinity, tamMax = Infinity) 
       break;
     } else {
       if (cadena.length < tamMin || cadena.length > tamMax) {
-        alert("La plabra excede o es menor que el tamaño necesario (" + tamMin + "-" + tamMax + ")");
+        alert("La plabra excede o es menor que el tamanyo necesario (" + tamMin + "-" + tamMax + ")");
         cadena = prompt(mensaje);
       } else {
         alert("No es una cadena o contiene caracteres no permitidos");
@@ -127,4 +127,221 @@ function funcionEliminarEspeciales(cadena) {
     }
   }
   return cadenaLimpia;
+}
+
+function funcionEsBisiesto(anyo) {
+  if ((anyo % 400 == 0) || ((anyo % 4 == 0) && (anyo % 100 != 0))) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function funcionFechaCorrecta(dia, mes, anyo) {
+  switch (mes) {
+    case 1:
+      if (dia > 31) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+    case 2:
+      if (funcionEsBisiesto(anyo)) {
+        if (dia > 29) {
+          return false;
+        } else {
+          return true;
+        }
+      } else {
+        if (dia > 28) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+      break;
+    case 3:
+      if (dia > 31) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+    case 4:
+      if (dia > 30) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+    case 5:
+      if (dia > 31) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+    case 6:
+      if (dia > 30) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+    case 7:
+      if (dia > 31) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+    case 8:
+      if (dia > 31) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+    case 9:
+      if (dia > 30) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+    case 10:
+      if (dia > 31) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+    case 11:
+      if (dia > 30) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+    case 12:
+      if (dia > 31) {
+        return false;
+      } else {
+        return true;
+      }
+      break;
+  }
+}
+
+function funcionDiaSemana(dia) {
+  switch (dia) {
+    case 1:
+      return "Lunes";
+      break;
+    case 2:
+      return "Martes";
+      break;
+    case 3:
+      return "Miercoles";
+      break;
+    case 4:
+      return "Jueves";
+      break;
+    case 5:
+      return "Viernes";
+      break;
+    case 6:
+      return "Sabado";
+      break;
+    case 0:
+      return "Domingo";
+      break;
+  }
+}
+
+function funcionMesCastellano(mes) {
+  switch (mes) {
+    case 0:
+      return "Enero";
+      break;
+    case 1:
+      return "Febrero";
+      break;
+    case 2:
+      return "Marzo";
+      break;
+    case 3:
+      return "Abril";
+      break;
+    case 4:
+      return "Mayo";
+      break;
+    case 5:
+      return "Junio";
+      break;
+    case 6:
+      return "Julio";
+      break;
+    case 7:
+      return "Agosto";
+      break;
+    case 8:
+      return "Septiembre";
+      break;
+    case 9:
+      return "Octubre";
+      break;
+    case 10:
+      return "Noviembre";
+      break;
+    case 11:
+      return "Diciembre";
+      break;
+  }
+}
+
+function funcionDiasMes(mes, anyo) {
+  switch (mes) {
+    case 0:
+      return 31;
+      break;
+    case 1:
+      if (funcionEsBisiesto(anyo)) {
+        return 29;
+      } else {
+        return 28;
+      }
+      break;
+    case 2:
+      return 31;
+      break;
+    case 3:
+      return 30;
+      break;
+    case 4:
+      return 31;
+      break;
+    case 5:
+      return 30;
+      break;
+    case 6:
+      return 31;
+      break;
+    case 7:
+      return 31;
+      break;
+    case 8:
+      return 30;
+      break;
+    case 9:
+      return 31;
+      break;
+    case 10:
+      return 30;
+      break;
+    case 11:
+      return 31;
+      break;
+  }
 }

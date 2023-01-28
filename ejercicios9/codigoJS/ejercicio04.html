@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E4</title>
+    <script defer src="./libreria.js"></script>
+    <script>
+        window.addEventListener("load", inicio);
+        function inicio() {
+            let raiz = document.getElementsByTagName("ul")[0];
+            let contador = 0;
+            aElementos = ["caballo", "pez", "gato", "limon", "corazon", "jirafa", "calamar", "perro", "kiwi", "pulmon"];
+            let intervalo = setInterval(
+                () => {
+                    let nuevoParrafo = document.createElement("li");
+                    let texto = aElementos[contador];
+                    nuevoParrafo.innerHTML = texto;
+                    raiz.appendChild(nuevoParrafo);
+                    contador++;
+                    if (contador == aElementos.length) {
+                        let auxVar = raiz.children.length;
+                        clearInterval(intervalo);
+                        if (confirm("¿Quieres ordenar las palabras alfabeticamente?")) {
+                            aElementos = aElementos.sort();
+                        }
+                        for (let index = 0; index < auxVar; index++) {
+                            raiz.removeChild(raiz.firstElementChild);
+                        }
+                        for (let index = 0; index < auxVar; index++) {
+                            nuevoParrafo = document.createElement("li");
+                            texto = aElementos[index];
+                            nuevoParrafo.innerHTML = texto;
+                            raiz.appendChild(nuevoParrafo);
+                        }
+                    }
+                }
+                , 1000);
+
+        }      
+    </script>
+</head>
+
+<body>
+    <ul>
+
+    </ul>
+</body>
+
+</html>

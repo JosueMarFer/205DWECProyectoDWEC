@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E5</title>
+  <script src="../../core/libreria.js"></script>
+</head>
+
+<body>
+  <script>
+    let mes = funcionSolicitarNumero("Introduce mes", 1, 12);
+    mes -= 1;
+    let anyo = funcionSolicitarNumero("Introduce año", 1900, 2023);
+    let fecha = new Date(anyo, mes, 1);
+    let aDias = [];
+    let diasMes = funcionDiasMes(mes, anyo);
+    let tabla = "<style>table{border: 0.3rem solid black;}thead{border: 0.3rem solid black;}tbody{border: 0.3rem solid black;}td{border: 0.1rem solid black;}</style><table><thead><tr><th>Lunes</th><th>Martes</th><th>Miercoles</th><th>Jueves</th><th>Viernes</th><th>Sabado</th><th>Domingo</th></tr></thead><tbody>";
+    if (fecha.getDay() != 0) {
+      tabla += "<tr>"
+      for (let index = 1; index < fecha.getDay(); index++) {
+        tabla += "<td></td>";
+      }
+    } else {
+      tabla += "<td></td><td></td><td></td><td></td><td></td><td></td>";
+    };
+
+    for (let index = 1; index <= diasMes; index++) {
+      fecha.setDate(index);
+      if (fecha.getDay() == 0) {
+        aDias.push("<td>" + (index).toString() + "</td></tr>")
+      } else {
+        if (fecha.getDay() == 1) {
+          aDias.push("</tr><td>" + (index).toString() + "</td>")
+        } else {
+          aDias.push("<td>" + (index).toString() + "</td>")
+        }
+      }
+    }
+    tabla += aDias.join("");
+    tabla += "</tbody></table>";
+    document.write(tabla);
+  </script>
+</body>
+
+</html>

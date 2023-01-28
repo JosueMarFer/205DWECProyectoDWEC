@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E4</title>
+  <script src="../../core/libreria.js"></script>
+</head>
+
+<body>
+  <script>
+    let fecha;
+    if (confirm("Desea introducir los parametros de la fecha\n(En caso contrario crea la fecha por defecto)")) {
+      let dia = funcionSolicitarNumero("Introduce dia", 1, 31);
+      let mes = funcionSolicitarNumero("Introduce mes", 1, 12);
+      let anyo = funcionSolicitarNumero("Introduce año", 1900, 2023);
+      let horas = funcionSolicitarNumero("Introduce hora", 0, 23);
+      let minutos = funcionSolicitarNumero("Introduce minutos", 0, 59);
+      let segundos = funcionSolicitarNumero("Introduce segundos", 0, 59);
+      while (funcionFechaCorrecta(dia, mes, anyo) == false) {
+        alert("No es una fecha correcta");
+        dia = funcionSolicitarNumero("Introduce dia", 1, 31);
+        mes = funcionSolicitarNumero("Introduce mes", 1, 12);
+        anyo = funcionSolicitarNumero("Introduce año", 1900, 2023);
+        horas = funcionSolicitarNumero("Introduce hora", 0, 23);
+        minutos = funcionSolicitarNumero("Introduce minutos", 0, 59);
+        segundos = funcionSolicitarNumero("Introduce segundos", 0, 59);
+      }
+      fecha = new Date(anyo, mes - 1, dia, horas, minutos, segundos);
+    } else {
+      fecha = new Date();
+    }
+    alert("Hoy es " + (funcionDiaSemana(fecha.getDay())) + ", " + (fecha.getDate()) + " de " + (funcionMesCastellano(fecha.getMonth())) + " de " + (fecha.getFullYear()) + " y son las " + (fecha.getHours()) + " horas, " + (fecha.getMinutes()) + " minutos y " + (fecha.getSeconds()) + " segundos.");
+  </script>
+</body>
+
+</html>

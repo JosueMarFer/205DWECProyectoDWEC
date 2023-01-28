@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>E1</title>
+    <meta charset="UTF-8">
+    <style>
+        .miClase {
+            color: red;
+        }
+    </style>
+    <script src="../../core/libreria.js"></script>
+    <script>
+        window.addEventListener("load", inicio);
+
+        function inicio() {
+            document.getElementById("cambiarTextos").addEventListener("click", cambiarTextos);
+            document.getElementById("cambiarClases").addEventListener("click", cambiarClases);
+            document.getElementById("quitarClases").addEventListener("click", quitarClases);
+        }
+
+        function cambiarTextos() {
+            let numParrafo = funcionSolicitarNumero("Introduce el numero de parrafo que quieres cambiar", 1, 3);
+            let textoSustitucion = funcionSolicitarCadena("Introduce el texto por el cual quieres sustituir el parrafo");
+            if (numParrafo == 1) {
+                document.getElementById("parrafo1").textContent = textoSustitucion;
+            }
+            if (numParrafo == 2) {
+                document.getElementById("parrafo2").textContent = textoSustitucion;
+            }
+            if (numParrafo == 3) {
+                document.getElementById("parrafo3").textContent = textoSustitucion;
+            }
+        }
+
+        function cambiarClases() {
+            document.getElementById("parrafo1").classList.toggle("miClase");
+            document.getElementById("parrafo2").classList.toggle("miClase");
+            document.getElementById("parrafo3").classList.toggle("miClase");
+        }
+
+        function quitarClases() {
+            document.getElementById("parrafo1").classList.remove("miClase");
+            document.getElementById("parrafo2").classList.remove("miClase");
+            document.getElementById("parrafo3").classList.remove("miClase");
+        }
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <p id="parrafo1">Este es el primer párrafo</p>
+        <p id="parrafo2">Este es el segundo párrafo</p>
+        <p id="parrafo3" class="miClase">Este es el tercer párrafo</p>
+    </div>
+    <br />
+    <button id="cambiarTextos">Cambiar texto de párrafos</button>
+    <button id="cambiarClases">Cambiar clases de párrafos</button>
+    <button id="quitarClases">Quitar clases de todos los párrafos</button>
+</body>
+
+</html>
