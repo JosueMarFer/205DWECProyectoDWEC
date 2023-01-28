@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E6</title>
+  <script src="../../core/libreria.js"></script>
+</head>
+
+<body>
+  <script>
+    let mapaPersonas = new Map();
+    let salida, diaAleatorio, mesAleatorio, anyoAleatorio;
+    for (let index = 0; index < 100; index++) {
+      do {
+        diaAleatorio = parseInt(Math.random() * 31 + 1);
+        mesAleatorio = parseInt(Math.random() * 12 + 1);
+        anyoAleatorio = parseInt(Math.random() * 41 + 1980);
+      } while (!funcionFechaCorrecta(diaAleatorio, mesAleatorio, anyoAleatorio));
+      let fechaAleatoria = new Date(anyoAleatorio, mesAleatorio, diaAleatorio);
+      mapaPersonas.set(index, fechaAleatoria);
+    }
+    let mes = funcionSolicitarNumero("Introduce el mes: ", 1, 12);
+    for (let index = 0; index < 100; index++) {
+      if (mapaPersonas.get(index).getMonth() == mes - 1) {
+        if (salida == undefined) {
+          salida = ("Usuario: " + index + " = " + mapaPersonas.get(index) + "</br>");
+        } else {
+          salida += ("Usuario: " + index + " = " + mapaPersonas.get(index) + "</br>");
+        }
+      }
+    }
+    document.write(salida);
+  </script>
+</body>
+
+</html>

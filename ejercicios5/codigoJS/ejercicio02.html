@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E2</title>
+  <script src="../../core/libreria.js"></script>
+</head>
+
+<body>
+  <script>
+    let palabra1 = funcionSolicitarPalabra("Introduce la palabra");
+    let palabra2 = funcionSolicitarPalabra("Introduce la palabra");
+    palabra1 = palabra1.toLowerCase();
+    palabra2 = palabra2.toLowerCase();
+    palabra1 = palabra1.split("");
+    palabra2 = palabra2.split("");
+    if (palabra1.length == palabra2.length) {
+      palabra1.sort();
+      palabra2.sort();
+      for (let index = 0; index < palabra1.length; index++) {
+        if (palabra1[index] != palabra2[index]) {
+          alert("No es un anagrama");
+          exit();
+        }
+      }
+    } else {
+      alert("No es un Anagrama");
+      exit();
+    }
+    alert("Es un anagrama");
+  </script>
+</body>
+
+</html>

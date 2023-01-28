@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E1</title>
+  <script src="../../core/libreria.js"></script>
+</head>
+
+<body>
+  <script>
+    let cadena = funcionSolicitarCadena("Introduce la cadena");
+    cadena = funcionEliminarAcentos(cadena);
+    cadena = funcionEliminarEspeciales(cadena);
+    cadena = cadena.toLowerCase();
+    cadenaSeparada = cadena.split("");
+    cadenaSeparada = cadenaSeparada.reverse();
+    cadenaReverse = cadenaSeparada.join("");
+    if (cadena == cadenaReverse) {
+      alert("Es un palindromo");
+    } else {
+      alert("No es un palindromo");
+    }
+  </script>
+</body>
+
+</html>

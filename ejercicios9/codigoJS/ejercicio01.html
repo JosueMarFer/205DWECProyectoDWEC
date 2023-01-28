@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E1</title>
+    <script defer src="./libreria.js"></script>
+    <script>
+        window.addEventListener("load", inicio);
+        function inicio() {
+            let cadena = funcionSolicitarCadena("Introduce la cadena a incorporar");
+            if (cadena == undefined || cadena == null) {
+                return;
+            };
+            let posicion = funcionSolicitarNumero("Introduce la posicion de el elemento dentro de la lista (1-10)", 1, 10);
+            if (posicion == undefined || posicion == null) {
+                return;
+            };
+            let lista = document.getElementsByTagName("ol")[0];
+            let nuevoElemento = document.createElement("li");
+            nuevoElemento.innerHTML = cadena;
+            lista.insertBefore(nuevoElemento, lista.children[posicion - 1]);
+        }
+    </script>
+</head>
+
+<body>
+    <ol>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum, tempore eius? Pariatur maiores, suscipit
+            commodi dolorem mollitia placeat esse soluta similique magni culpa amet cupiditate quod id voluptatum quos
+            doloribus.</li>
+        <li>Numquam ratione maiores eaque sunt vero deserunt ut repudiandae ex id excepturi porro labore quod cumque
+            architecto molestiae provident, modi illo, doloribus ipsa quisquam commodi optio vitae! Incidunt, sint
+            dolorem.</li>
+        <li>Exercitationem at possimus eveniet officia illum nisi quaerat architecto, sit eos sapiente ex. Distinctio
+            ea, voluptatum odio vero consequatur eaque quisquam corporis. Aspernatur, culpa. Rem inventore rerum hic
+            quos laborum.</li>
+        <li>Nisi animi tempora aperiam voluptatibus dolor odio esse, a odit architecto sapiente et maiores, dignissimos
+            nulla iure ullam beatae eveniet? Necessitatibus id aliquid animi quam commodi fuga facere cupiditate qui?
+        </li>
+        <li>Expedita alias nesciunt vero? Esse unde quos quia perferendis hic sint iusto suscipit magnam. Culpa
+            voluptatibus, deleniti eum labore aut obcaecati eos doloremque rem iste? Eos distinctio ad nihil voluptatum!
+        </li>
+        <li>Assumenda dicta tenetur dolorem corporis accusantium at excepturi? Nesciunt recusandae ad at alias, deleniti
+            sapiente enim in sed, voluptas rerum nobis quo officia non omnis dolore incidunt impedit consequuntur fuga.
+        </li>
+        <li>Nam inventore enim saepe, nulla culpa ea quia consequuntur nisi repudiandae illum doloremque corporis?
+            Beatae, laudantium asperiores. Eius, vel! Corrupti error odio saepe eligendi velit impedit modi et ipsa
+            dolore!</li>
+        <li>In est optio ad veniam sunt, impedit quis distinctio officia saepe repellat nisi, sequi voluptate quam, quos
+            aut reiciendis eos dolor pariatur adipisci? Autem quia hic quod error, blanditiis sapiente!</li>
+        <li>Quod, nihil voluptate quae id quas laborum rem nisi beatae illum deleniti magnam eius ex impedit, itaque
+            cupiditate. Rem pariatur eveniet ipsum! Consequuntur, alias doloribus maxime repellat nisi modi sed!</li>
+    </ol>
+</body>
+
+</html>

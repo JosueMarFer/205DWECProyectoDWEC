@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E9</title>
+  <script src="../../core/libreria.js"></script>
+</head>
+
+<body>
+  <script>
+    expr = /^[XYZ0-9][0-9]{7}[A-Z]$/i;
+    let cadena = prompt("Introduce el DNI");
+    if (expr.test(cadena)) {
+      if (cadena.charAt(0) == "X") {
+        cadena.replace("X", "0");
+      }
+      if (cadena.charAt(0) == "Y") {
+        cadena.replace("Z", "1");
+      }
+      if (cadena.charAt(0) == "Z") {
+        cadena.replace("Y", "2");
+      }
+      let letra;
+      for (let index = 0; index < cadena.length - 1; index++) {
+        if (letra == undefined) {
+          letra = cadena.charAt(index);
+        } else {
+          letra += cadena.charAt(index);
+        }
+        letra = parseInt(letra);
+      }
+      let aLetra = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"]
+      letra = aLetra[letra % 23];
+      if (cadena.charAt(cadena.length - 1).toUpperCase() == letra) {
+        alert("Expresión Correcta");
+      } else {
+        alert("Expresión Incorrecta");
+      }
+    } else {
+      alert("Expresión Incorrecta");
+    }
+  </script>
+</body>
+
+</html>

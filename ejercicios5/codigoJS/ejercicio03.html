@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E3</title>
+  <script src="../../core/libreria.js"></script>
+</head>
+
+<body>
+  <script>
+    let dia = funcionSolicitarNumero("Introduce tu dia de nacimiento", 1, 31);
+    let mes = funcionSolicitarNumero("Introduce tu mes de nacimiento", 1, 12);
+    let anyo = funcionSolicitarNumero("Introduce tu año de nacimiento", 1900, 2023);
+    while (funcionFechaCorrecta(dia, mes, anyo) == false) {
+      alert("No es una fecha correcta");
+      dia = funcionSolicitarNumero("Introduce tu dia de nacimiento", 1, 31);
+      mes = funcionSolicitarNumero("Introduce tu mes de nacimiento", 1, 12);
+      anyo = funcionSolicitarNumero("Introduce tu año de nacimiento", 1900, 2023);
+    }
+    let fechaNacimiento = new Date(anyo, mes - 1, dia);
+    let fechaActual = new Date();
+    let fechaProvisional = new Date(anyo, mes - 1, dia);
+    for (let index = fechaNacimiento.getFullYear(); index <= fechaActual.getFullYear(); index++) {
+      fechaProvisional.setFullYear(index);
+      if (index <= fechaNacimiento.getFullYear()) {
+        document.write("El dia de la semana de tu fecha de nacimiento es: " + (funcionDiaSemana(fechaNacimiento.getDay())) + "<br>");
+      } else {
+        if (fechaProvisional <= fechaActual) {
+          document.write("El dia de la semana de tu cumpleaños del año " + fechaProvisional.getFullYear() + " es: " + (funcionDiaSemana(fechaProvisional.getDay())) + "<br>");
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
