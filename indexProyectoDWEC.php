@@ -43,6 +43,12 @@
         <a href="./ejercicios9/indexEjercicios9.php">
           <h3>Ejercicios 9</h3>
         </a>
+        <a href="./ejercicios10/indexEjercicios10.php">
+          <h3>Ejercicios 10</h3>
+        </a>
+        <a href="./ejerciciosExamen/indexEjerciciosExamen.php">
+          <h3>Ejercicios Examen</h3>
+        </a>
       </section>
       <div class="return">
         <a href="../index.html"><img src="./webroot/images/back.png" alt="Imagen back"></a>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E6</title>
+  <script>
+    window.addEventListener("load", inicio);
+    function inicio() {
+      let arrastrable = document.getElementsByClassName("div1")[0];
+      let destino = document.getElementsByClassName("div2")[0];
+
+      arrastrable.addEventListener("drag", (e) => arrastrable.style.opacity = "0.5");
+      destino.addEventListener("dragenter", (e) => destino.style.backgroundColor = "red");
+      destino.addEventListener("dragleave", (e) => destino.style.backgroundColor = "white");
+      destino.addEventListener("dragover", (e) => e.preventDefault());
+      destino.addEventListener("drop", (e) => {
+        destino.innerHTML = "¡Lo has conseguido!";
+        document.getElementsByClassName("container")[0].removeChild(arrastrable);
+      });
+    };
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .div1 {
+      width: 200px;
+      height: 100px;
+      border: solid 1px black;
+      background-color: yellow;
+      position: absolute;
+      left: 25%;
+      top: 50%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .div2 {
+      width: 200px;
+      height: 100px;
+      border: solid 1px black;
+      background-color: rgb(255, 255, 255);
+      position: absolute;
+      right: 25%;
+      top: 50%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="div1" draggable="true">Soy arrastrable</div>
+    <div class="div2">Soy el destino</div>
+  </div>
+</body>
+
+</html>
