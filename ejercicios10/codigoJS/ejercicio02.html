@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E2</title>
+    <script>
+        window.addEventListener("load", inicio);
+        function inicio() {
+            let container = document.getElementsByClassName("container")[0];
+            document.body.addEventListener("keydown", funcionBackground);
+            function funcionBackground(e) {
+                if (e.altKey && e.key == "F12") {
+                    container.style.backgroundImage = "url(https://picsum.photos/" + screen.availWidth + "/" + screen.availHeight + ")";
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #boton {
+            color: white;
+            font-size: 5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="boton">
+            Pulsa alt+f12
+        </div>
+    </div>
+</body>
+
+</html>

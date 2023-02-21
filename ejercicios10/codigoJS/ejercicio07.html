@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E7</title>
+  <script>
+    window.addEventListener("load", inicio);
+    function inicio() {
+      let imagen = document.getElementsByTagName("img")[0];
+      let selector = document.getElementById("incidencia");
+      let mostrarDescripcion = document.getElementById("descripcion");
+      let enviarDatos = document.getElementById("enviar");
+      let expr = /^[0-9]{3}[A-Z]{4}[12A]$/;
+      let numeroSerie = document.getElementById("numeroSerie");
+      let errorMessage = document.getElementById("errorMessage");
+      let lblNumeroSerie = document.getElementById("lblNumeroSerie");
+      selector.addEventListener("change", (e) => {
+        switch (selector.value) {
+          case "Distribucion":
+            imagen.setAttribute("src", "https://picsum.photos/id/500/400/250");
+            break;
+          case "Oficina":
+            imagen.setAttribute("src", "https://picsum.photos/id/600/400/250");
+            break;
+          case "Produccion":
+            imagen.setAttribute("src", "https://picsum.photos/id/700/400/250");
+            break;
+        }
+      });
+      mostrarDescripcion.addEventListener("click", (e) => {
+        textArea = document.createElement("textarea");
+        textArea.setAttribute("cols", 40);
+        textArea.setAttribute("rows", 20);
+        document.getElementsByClassName("formElement")[4].appendChild(textArea);
+      });
+      enviarDatos.addEventListener("click", (e) => {
+        if (!expr.test(numeroSerie.value)) {
+          e.preventDefault();
+          numeroSerie.setAttribute("class", "claseError");
+          lblNumeroSerie.setAttribute("class", "claseError");
+          errorMessage.setAttribute("class", "claseMessageError");
+        }
+      });
+      numeroSerie.addEventListener("focus", (e) => {
+        numeroSerie.toggleAttribute("class");
+        lblNumeroSerie.toggleAttribute("class");
+        errorMessage.toggleAttribute("class");
+      });
+    };
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      background-color: orange;
+    }
+
+    form {
+      margin: 2rem;
+    }
+
+    img {
+      float: left;
+      margin: 2rem;
+    }
+
+    form * {
+      margin: 0.5rem;
+    }
+
+    .formElement {
+      display: block;
+    }
+
+    .claseError {
+      border: 1px solid red;
+    }
+
+    #errorMessage {
+      color: transparent;
+      width: 20rem;
+      height: 5rem;
+      float: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .claseMessageError {
+      background-color: red;
+      color: white !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>INFORME INCIDENCIA</h1>
+    <img src="https://picsum.photos/id/500/400/250" alt="Imagen distribucion">
+    <form method="post">
+      <div class="formElement">
+        <label for="incidencia">Tipo de incidencia:</label>
+        <select name="incidencia" id="incidencia">
+          <option value="Distribucion">Distribucion</option>
+          <option value="Oficina">Oficina</option>
+          <option value="Produccion">Produccion</option>
+        </select>
+      </div>
+      <div class="formElement">
+        <label for="numeroSerie" id="lblNumeroSerie">Numero de serie:</label>
+        <input type="text" name="numeroSerie" id="numeroSerie">
+      </div>
+      <div class="formElement">
+        <input type="button" name="mostrarDescripcion" id="descripcion" value="Mostrar descripcion">
+      </div>
+      <div class="formElement">
+        <input type="submit" name="enviarDatos" id="enviar" value="Enviar datos">
+      </div>
+      <div id="errorMessage">Error en la entrada</div>
+      <div class="formElement"></div>
+    </form>
+  </div>
+</body>
+
+</html>
